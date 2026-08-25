@@ -1,9 +1,17 @@
 package hu.bme.aut.adatvez.webshop.model;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 /**
@@ -19,12 +27,10 @@ public class Order implements Serializable {
 	@Id
 	private long id;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name="\"Date\"")
-	private Date date;
+	private LocalDate date;
 
-	@Temporal(TemporalType.DATE)
-	private Date deadline;
+	private LocalDate deadline;
 
 	//bi-directional many-to-one association to Invoice
 	@OneToMany(mappedBy="order")
@@ -60,19 +66,19 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
-	public Date getDeadline() {
+	public LocalDate getDeadline() {
 		return this.deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
 

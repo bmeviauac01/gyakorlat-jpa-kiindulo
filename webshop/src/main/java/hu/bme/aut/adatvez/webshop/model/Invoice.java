@@ -1,10 +1,16 @@
 package hu.bme.aut.adatvez.webshop.model;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 
 
 /**
@@ -20,9 +26,8 @@ public class Invoice implements Serializable {
 	private long id;
 
 	private String cancelled;
-
-	@Temporal(TemporalType.DATE)
-	private Date creationdate;
+	
+	private LocalDate creationdate;
 
 	private String customerocity;
 
@@ -32,11 +37,9 @@ public class Invoice implements Serializable {
 
 	private String customerozipcode;
 
-	@Temporal(TemporalType.DATE)
-	private Date deliverydate;
+	private LocalDate deliverydate;
 
-	@Temporal(TemporalType.DATE)
-	private Date paymentdeadline;
+	private LocalDate paymentdeadline;
 
 	private String paymentmethod;
 
@@ -75,11 +78,11 @@ public class Invoice implements Serializable {
 		this.cancelled = cancelled;
 	}
 
-	public Date getCreationdate() {
+	public LocalDate getCreationdate() {
 		return this.creationdate;
 	}
 
-	public void setCreationdate(Date creationdate) {
+	public void setCreationdate(LocalDate creationdate) {
 		this.creationdate = creationdate;
 	}
 
@@ -115,19 +118,19 @@ public class Invoice implements Serializable {
 		this.customerozipcode = customerozipcode;
 	}
 
-	public Date getDeliverydate() {
+	public LocalDate getDeliverydate() {
 		return this.deliverydate;
 	}
 
-	public void setDeliverydate(Date deliverydate) {
+	public void setDeliverydate(LocalDate deliverydate) {
 		this.deliverydate = deliverydate;
 	}
 
-	public Date getPaymentdeadline() {
+	public LocalDate getPaymentdeadline() {
 		return this.paymentdeadline;
 	}
 
-	public void setPaymentdeadline(Date paymentdeadline) {
+	public void setPaymentdeadline(LocalDate paymentdeadline) {
 		this.paymentdeadline = paymentdeadline;
 	}
 
